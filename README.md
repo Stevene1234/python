@@ -1,1 +1,1 @@
-# python game for my kids
+# python guess number game
