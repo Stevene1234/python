@@ -1,42 +1,32 @@
-import turtle
 import random
 
-def onscreen(window, turt):
-    '''setting up the window boarder conditions'''
-    leftboarder =-window.window_width()/2
-    rightboarder = window.window_width() / 2
-    topboarder = window.window_height() / 2
-    bottomboarder =-window.window_height() / 2
+guesstakes= 0
+print("Hello whats your name? ")
+myname = input()
+number = random.randint(0, 20)
+print('Well hello '+ myname + ' Im thinking of a number 1 thru 20.')
 
+while guesstakes < 10:
+     print(" please take a guess")
+     guess = input()
+     guess = int(guess)
 
-    turtleX = turt.xcor()
-    turtleY = turt.ycor()
+     guesstakes = guesstakes + 1
 
+     if guess < number:
+         print("higher!")
 
-    isonscreen = True
-    if turtleX > rightboarder or turtleX < leftboarder:
-       isonscreen = False
-    if turtleY > topboarder or turtleY < bottomboarder:
-        isonscreen = False
+     if guess > number:
+         print("lower!")
 
-    return onscreen
+     if guess == number:
+          break
 
+if guess == number:
+     guesstakes = str(guesstakes)
+     print("great job "+ myname + "! you got it in " +guesstakes+ " guesses!")
 
-wn = turtle.Screen()
-wn.bgcolor('black')
+if guess != number:
+     number= str(number)
+     print("Nope! The number i was thinking was "+ number)
 
-
-sarah = turtle.Turtle()
-sarah.color('red')
-sarah.shape('turtle')
-
-while onscreen(wn,sarah):
-    rand = random.randrange(0, 2)
-    if rand == 0:
-        sarah.left(90)
-    else:
-        sarah.right(90)
-
-    sarah.forward(50)
-
-wn.exitonclick()
